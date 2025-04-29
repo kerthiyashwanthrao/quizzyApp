@@ -41,7 +41,7 @@ export default function Header() {
         </Link>
       </div>
       <div className="navIcon">
-        <Link className="menuItem" to="/">
+        <Link className="menuItem" >
           High score {highScore}
         </Link>
       </div>
