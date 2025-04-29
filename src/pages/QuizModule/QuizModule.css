@@ -1,0 +1,54 @@
+.modules-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #d5e2ee, #d9e2ec);
+    font-family: 'Poppins', sans-serif;
+
+
+    background-position: center;
+  
+  }
+  
+  .modules-page h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #2f4858;
+    text-align: center;
+  }
+  
+  .modules-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .modules-list button {
+    background: #2f80ed;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .modules-list button:hover {
+    background: #1366d6;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+  }
+  
+  .modules-list button:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
