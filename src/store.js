@@ -1,11 +1,12 @@
-// src/store.js
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from "./reducers/counterReducer"
-import quizSlice from "./reducers/quizSectionReducer"
+import { configureStore } from "@reduxjs/toolkit";
+import quizSlice from "./reducers/quizSectionReducer";
+import themeSlice from "./reducers/themeReducer";
+import authSlice from "./reducers/authReducer"
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    quiz:quizSlice
+    quiz: quizSlice,
+    theme: themeSlice,
+    auth:authSlice
   },
 });

@@ -25,25 +25,35 @@ const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    // startQuiz: (state) => {
-    //   // state.questions = action.payload.questions;
-    //   state.quizStarted = true;
-    //   state.currentQuestionIndex = 0;
-    //   state.answers = {};
-    //   state.score = 0;
-    //   state.quizSubmitted = false;
-    //   state.timer =  30;
-    // },
+    startQuiz: (state) => {
+      // state.questions = action.payload.questions;
+      state.quizStarted = true;
+      state.currentQuestionIndex = 0;
+      state.answers = {};
+      state.score = 0;
+      state.quizSubmitted = false;
+      state.timer =  15;
+    },
     resetQuiz: (state) => {
       Object.assign(state, initialState);
     },
     selectAnswers: (state, action) => {
       const { questionId, answer } = action.payload;
-      state.selectedAnswers = {
-        ...state.selectedAnswers,
-        [questionId]: answer,
-      };
-    },
+      // If the same answer is selected again, remove it (deselect)
+      if (state.selectedAnswers[questionId] === answer) {
+        const updatedAnswers = { ...state.selectedAnswers };
+        delete updatedAnswers[questionId]; // Remove the key
+        state.selectedAnswers = updatedAnswers;
+        console.log("Deselected answer for question", questionId);
+      } else {
+        // Otherwise, select the new answer
+        state.selectedAnswers = {
+          ...state.selectedAnswers,
+          [questionId]: answer,
+        };
+      }
+    }
+,    
     prevQuestion: (state) => {
       if (state.currentIndex > 0) {
         state.currentIndex = state.currentIndex - 1;
@@ -58,6 +68,7 @@ const quizSlice = createSlice({
       });
       state.score = score;
       state.quizSubmitted = true;
+      state.selectedAnswers = {}
     
       if (state.score > state.highScore) {
         state.highScore = state.score;

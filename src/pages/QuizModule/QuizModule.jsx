@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectModule } from "../../reducers/quizSectionReducer";
+import { selectModule, startQuiz } from "../../reducers/quizSectionReducer";
 import { useNavigate } from "react-router-dom";
 import ReusableModal from "../../components/ReusableModal/ReusableModal";
 import "./QuizModule.css";
@@ -21,6 +21,7 @@ const ModulesPage = () => {
   const onClose = () => setIsOpen(false);
 
   const onConfirm = () => {
+    dispatch(startQuiz)
     navigate("/quiz"); // Navigate to Quiz Page
     setIsOpen(false);
   };

@@ -12,10 +12,14 @@
 .question {
     background: linear-gradient(145deg, #f9fafb, #ffffff);
     border-radius: 16px;
-    padding: 10px;
+    padding: 8px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     border: 1px solid #e5e7eb;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
   }
   .btn-primary {
     display: block;              /* Makes the button take full width of its container */

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAnswers,
   nextQuestion,
-  prevQuestion,
+  // prevQuestion,
   submitQuiz,
   decreaseTimer,
 } from "../../../reducers/quizSectionReducer";
@@ -23,14 +23,13 @@ const QuizSection = () => {
   } = useSelector((state) => state.quiz);
   const dispatch = useDispatch();
   const [initialTimer, setInitialTimer] = useState(0);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const currentQuestion = questionsData[currentIndex];
 
   useEffect(() => {
     setInitialTimer(timer);
     console.log("initial time");
-    
   }, []);
 
   useEffect(() => {
@@ -54,36 +53,43 @@ const QuizSection = () => {
       dispatch(submitQuiz());
     } else {
       console.log("next");
-      
+
       dispatch(nextQuestion());
     }
   };
 
- const onClickBackToHome = () =>{
-  navigate("/")
- } 
+  const onClickBackToHome = () => {
+    navigate("/");
+  };
 
   return (
     <div className="quizSection">
-      {!quizSubmitted &&<ProgressBar timer={timer} initialTimer={initialTimer} />}
+      {!quizSubmitted && (
+        <ProgressBar timer={timer} initialTimer={initialTimer} />
+      )}
       {!quizSubmitted ? (
         <>
-          <h2 className="question">
-            Question {currentIndex + 1} of {questionsData.length}
-          </h2>
+          <div className="question">
+            <h3>
+              Question {currentIndex + 1} of {questionsData.length}
+            </h3>
+
+            <span style={{ color: "red" }}> {timer} secs left </span>
+          </div>
+
           <QuestionCard
             question={currentQuestion}
             selectedAnswer={selectedAnswers[currentQuestion.id] || null}
             onAnswerSelect={handleAnswerSelect}
           />
           <div className="button-container">
-            <button
+            {/* <button
               onClick={() => dispatch(prevQuestion())}
               className="btn-primary"
-              disabled={currentIndex === 0}
+              disabled={currentIndex === 0 || quizSubmitted===true  }
             >
               Previous
-            </button>
+            </button> */}
             <button
               onClick={handleNextOrSubmit}
               className="btn-primary"
