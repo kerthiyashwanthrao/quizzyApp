@@ -3,15 +3,12 @@ import { useSelector } from "react-redux";
 import QuizSection from "../../components/Quiz/QuizSection/QuizSection";
 
 const Quiz = () => {
-  const {currentIndex,questionsData} = useSelector((state)=>state.quiz)
+  const { currentIndex, questionsData } = useSelector((state) => state.quiz);
 
   const currentQuestion = questionsData[currentIndex];
-  console.log(currentIndex);
-  
 
   return (
     <div className="quizMainSection">
-      <p>start quiz</p>
       <QuizSection key={currentQuestion.id} question={currentQuestion} />
     </div>
   );

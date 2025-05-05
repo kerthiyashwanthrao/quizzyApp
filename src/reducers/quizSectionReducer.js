@@ -13,7 +13,7 @@ const initialState = {
   score: 0,
   quizStarted: false,
   quizSubmitted: false,
-  timer: 15, // 5 minutes
+  timer: 30, // 5 minutes
   initialTimer:30,
   modules: ['HTML', 'CSS', 'JavaScript', 'React'],
   highScore: 0,
@@ -32,7 +32,7 @@ const quizSlice = createSlice({
       state.answers = {};
       state.score = 0;
       state.quizSubmitted = false;
-      state.timer =  15;
+      state.timer =  30;
     },
     resetQuiz: (state) => {
       Object.assign(state, initialState);
@@ -68,6 +68,7 @@ const quizSlice = createSlice({
       });
       state.score = score;
       state.quizSubmitted = true;
+      state.quizStarted = false
       state.selectedAnswers = {}
     
       if (state.score > state.highScore) {
@@ -78,13 +79,6 @@ const quizSlice = createSlice({
       state.currentIndex += 1;
       state.timer= initialState.initialTimer
     },
-    // timerTick: (state) => {
-    //   if (state.timer > 0) {
-    //     state.timer -= 1;
-    //   } else {
-    //     state.quizSubmitted = true;
-    //   }
-    // },
     setHighScore: (state) => {
       if (state.score > state.highScore) {
         state.highScore = state.score;

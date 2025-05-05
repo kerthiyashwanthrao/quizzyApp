@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ModulesPage from './pages/QuizModule/QuizModule';
@@ -7,6 +7,12 @@ import Layout from './layouts/Layout';
 
 const App = () => {
   const selectedModule = useSelector((state) => state.quiz.selectedModule);
+  const theme = useSelector(state=>state.theme.mode)
+
+  useEffect(() => {
+    document.body.className = ''; // Clear existing classes
+    document.body.classList.add(theme); // e.g., "dark" or "light"
+  }, [theme]);
 
   return (
     <Router>

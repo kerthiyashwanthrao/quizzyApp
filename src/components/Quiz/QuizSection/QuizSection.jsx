@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectAnswers,
   nextQuestion,
-  // prevQuestion,
   submitQuiz,
   decreaseTimer,
 } from "../../../reducers/quizSectionReducer";
@@ -24,6 +23,7 @@ const QuizSection = () => {
   const dispatch = useDispatch();
   const [initialTimer, setInitialTimer] = useState(0);
   const navigate = useNavigate();
+  const [answerSelectError, setAnswerSelectError] = useState(false);
 
   const currentQuestion = questionsData[currentIndex];
 
@@ -43,18 +43,22 @@ const QuizSection = () => {
   }, [dispatch, quizSubmitted]);
 
   const handleAnswerSelect = (answer) => {
+    setAnswerSelectError(false);
     dispatch(selectAnswers({ questionId: currentQuestion.id, answer }));
   };
 
   const handleNextOrSubmit = () => {
     if (currentIndex + 1 === questionsData.length) {
-      console.log("submit");
-
       dispatch(submitQuiz());
     } else {
-      console.log("next");
+      if (currentIndex in selectedAnswers) {
+        setAnswerSelectError(false);
 
-      dispatch(nextQuestion());
+        dispatch(nextQuestion());
+      } else {
+        setAnswerSelectError(true);
+        console.log(answerSelectError, "answerselect error");
+      }
     }
   };
 
@@ -82,14 +86,12 @@ const QuizSection = () => {
             selectedAnswer={selectedAnswers[currentQuestion.id] || null}
             onAnswerSelect={handleAnswerSelect}
           />
+          {answerSelectError && (
+            <p style={{ color: "red", textAlign: "center" ,fontSize:"18px"}}>
+              * Please select an answer
+            </p>
+          )}
           <div className="button-container">
-            {/* <button
-              onClick={() => dispatch(prevQuestion())}
-              className="btn-primary"
-              disabled={currentIndex === 0 || quizSubmitted===true  }
-            >
-              Previous
-            </button> */}
             <button
               onClick={handleNextOrSubmit}
               className="btn-primary"

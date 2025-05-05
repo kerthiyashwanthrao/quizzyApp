@@ -40,3 +40,30 @@
 .read-the-docs {
   color: #888;
 }
+
+/*  */
+/* styles.css */
+body.light {
+  background-color: white;
+  color: black;
+}
+
+body.dark {
+  background-color: #121212;
+  color: white;
+}
+
+/* .card {
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 8px;
+} */
+
+/* Theme-aware component styles */
+/* body.dark .card {
+  background-color: #1e1e1e;
+}
+
+body.light .card {
+  background-color: #f9f9f9;
+} */

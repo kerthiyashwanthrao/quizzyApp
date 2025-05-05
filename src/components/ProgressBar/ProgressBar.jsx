@@ -1,15 +1,8 @@
-// ProgressBar.jsx
 import React from "react";
-import "./ProgressBar.css"; // Import CSS file
+import "./ProgressBar.css";
 
-const ProgressBar = ({ timer ,initialTimer}) => {
-    console.log(timer,"timer");
-    console.log(initialTimer,"initialTimer");
-    
-    // const initialTimer = timer
-    const progressWidth = (timer / initialTimer) * 100 ;
-    console.log(progressWidth,"progressWidth");
-    
+const ProgressBar = ({ timer, initialTimer }) => {
+  const progressWidth = (timer / initialTimer) * 100;
 
   return (
     <div className="progress-bar-container">

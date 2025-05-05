@@ -21,8 +21,8 @@ const ModulesPage = () => {
   const onClose = () => setIsOpen(false);
 
   const onConfirm = () => {
-    dispatch(startQuiz)
-    navigate("/quiz"); // Navigate to Quiz Page
+    dispatch(startQuiz())
+    navigate("/quiz",{ replace: true });
     setIsOpen(false);
   };
 
