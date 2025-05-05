@@ -9,7 +9,7 @@ const Quiz = () => {
 
   return (
     <div className="quizMainSection">
-      <QuizSection key={currentQuestion.id} question={currentQuestion} />
+      <QuizSection key={currentIndex} question={currentQuestion} />
     </div>
   );
 };

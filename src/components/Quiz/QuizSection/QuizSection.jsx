@@ -43,8 +43,10 @@ const QuizSection = () => {
   }, [dispatch, quizSubmitted]);
 
   const handleAnswerSelect = (answer) => {
+    console.log(selectedAnswers);
+    
     setAnswerSelectError(false);
-    dispatch(selectAnswers({ questionId: currentQuestion.id, answer }));
+    dispatch(selectAnswers({ questionId: currentIndex, answer }));
   };
 
   const handleNextOrSubmit = () => {
@@ -86,7 +88,7 @@ const QuizSection = () => {
 
           <QuestionCard
             question={currentQuestion}
-            selectedAnswer={selectedAnswers[currentQuestion.id] || null}
+            selectedAnswer={selectedAnswers[currentIndex] || null}
             onAnswerSelect={handleAnswerSelect}
           />
           {answerSelectError && (

@@ -6,6 +6,7 @@ import { htmlQuestionsData } from "../Questions/html";
 import { cssQuestionsData } from "../Questions/css";
 import { javascriptQuestionsData } from "../Questions/javascript";
 import { reactjsQuestionsData } from "../Questions/reactjs";
+import { reduxQuestionsData } from "../Questions/redux";
 
 
 const initialState = {
@@ -15,7 +16,7 @@ const initialState = {
   quizSubmitted: false,
   timer: 30, // 5 minutes
   initialTimer:30,
-  modules: ['HTML', 'CSS', 'JavaScript', 'React'],
+  modules: ['HTML', 'CSS', 'JavaScript', 'React',"Redux"],
   highScore: 0,
   currentIndex: 0,
   selectedAnswers: {},
@@ -127,6 +128,9 @@ const quizSlice = createSlice({
         case 'React':
           state.questionsData = reactjsQuestionsData;
           break;
+          case "Redux":
+            state.questionsData = reduxQuestionsData;
+            break;
         default:
           state.questionsData = [];
           break;
