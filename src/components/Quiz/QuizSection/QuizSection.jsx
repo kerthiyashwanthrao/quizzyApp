@@ -49,7 +49,10 @@ const QuizSection = () => {
 
   const handleNextOrSubmit = () => {
     if (currentIndex + 1 === questionsData.length) {
-      dispatch(submitQuiz());
+      if(currentIndex in selectedAnswers){
+        dispatch(submitQuiz());
+      }
+      setAnswerSelectError(true)
     } else {
       if (currentIndex in selectedAnswers) {
         setAnswerSelectError(false);
