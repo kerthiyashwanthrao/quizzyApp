@@ -39,8 +39,8 @@
   }
   
   .answer-button:hover {
-    background-color: #f3f4f6;
-    border-color: #d1d5db;
+    background: linear-gradient(145deg, #3b82f6, #2563eb);
+    border-color: #1d4ed8;
   }
   
   .answer-button.selected {

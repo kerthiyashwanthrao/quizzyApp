@@ -93,6 +93,9 @@ const quizSlice = createSlice({
         state.score = state.score + 1;
       }
     },
+    shuffleQuestions:(state)=>{
+      state.questionsData = state.questionsData.sort(()=>Math.random()-0.5)
+    },
     decreaseTimer: (state) => {
       if (state.timer > 0) {
         state.timer -= 1;
@@ -151,7 +154,8 @@ export const {
   currentIndex,
   selectedAnswers,
   decreaseTimer,
-  selectModule
+  selectModule,
+  shuffleQuestions
 } = quizSlice.actions;
 
 export default quizSlice.reducer;
