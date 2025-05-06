@@ -4,7 +4,8 @@ import { selectModule, startQuiz } from "../../reducers/quizSectionReducer";
 import { useNavigate } from "react-router-dom";
 import ReusableModal from "../../components/ReusableModal/ReusableModal";
 import "./QuizModule.css";
-import backgroundImage from "../../assets/keyboard-tea-cup-apple-office-stationeries-black-background.jpg"
+import backgroundImage from "../../assets/keyboard-tea-cup-apple-office-stationeries-black-background.jpg";
+import { motion } from "framer-motion";
 
 const ModulesPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,21 +22,36 @@ const ModulesPage = () => {
   const onClose = () => setIsOpen(false);
 
   const onConfirm = () => {
-    dispatch(startQuiz())
-    navigate("/quiz",{ replace: true });
+    dispatch(startQuiz());
+    navigate("/quiz", { replace: true });
     setIsOpen(false);
   };
 
   return (
-    <div className="modules-page" style={{ backgroundImage: `url(${backgroundImage})`, height: '100vh', backgroundSize:"cover" }}  >
-      <h2 style={{color:"#d5e2ee"}} >Select a Module for Quiz</h2>
-      <div className="modules-list">
+    <div
+      className="modules-page"
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        height: "100vh",
+        backgroundSize: "cover",
+      }}
+    >
+      <h2 style={{ color: "#d5e2ee" }}>Select a Module for Quiz</h2>
+      <motion.div
+        className="modules-list"
+        initial={{ opacity: 0, y: 50, scale: 1 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{
+          duration: 4,
+          ease: [0.22, 1, 0.36, 1], // a smooth "easeOutExpo" feel
+        }}
+      >
         {modules.map((module) => (
           <button key={module} onClick={() => handleModuleClick(module)}>
             {module}
           </button>
         ))}
-      </div>
+      </motion.div>
       <ReusableModal
         isOpen={isOpen}
         onClose={onClose}
