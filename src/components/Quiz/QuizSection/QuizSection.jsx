@@ -68,7 +68,7 @@ const QuizSection = () => {
   };
 
   const onClickBackToHome = () => {
-    navigate("/");
+    navigate("/",{ replace: true });
   };
 
   return (
@@ -79,7 +79,7 @@ const QuizSection = () => {
       {!quizSubmitted ? (
         <>
           <div className="question">
-            <h3>
+            <h3 className="question-no">
               Question {currentIndex + 1} of {questionsData.length}
             </h3>
 

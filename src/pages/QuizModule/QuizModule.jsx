@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectModule, startQuiz,shuffleQuestions } from "../../reducers/quizSectionReducer";
+import {
+  selectModule,
+  startQuiz,
+  shuffleQuestions,
+} from "../../reducers/quizSectionReducer";
 import { useNavigate } from "react-router-dom";
 import ReusableModal from "../../components/ReusableModal/ReusableModal";
 import "./QuizModule.css";
-import backgroundImage from "../../assets/keyboard-tea-cup-apple-office-stationeries-black-background.jpg";
 import { motion } from "framer-motion";
 
 const ModulesPage = () => {
@@ -22,22 +25,15 @@ const ModulesPage = () => {
   const onClose = () => setIsOpen(false);
 
   const onConfirm = () => {
-    dispatch(shuffleQuestions())
+    dispatch(shuffleQuestions());
     dispatch(startQuiz());
     navigate("/quiz", { replace: true });
     setIsOpen(false);
   };
 
   return (
-    <div
-      className="modules-page"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        height: "100vh",
-        backgroundSize: "cover",
-      }}
-    >
-      <h2 style={{ color: "#d5e2ee" }}>Select a Module for Quiz</h2>
+    <div className="modules-page">
+      <h2 >Select a Module for Quiz</h2>
       <motion.div
         className="modules-list"
         initial={{ opacity: 0, y: 50, scale: 1 }}

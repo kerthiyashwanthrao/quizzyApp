@@ -10,8 +10,7 @@ const App = () => {
   const theme = useSelector(state=>state.theme.mode)
 
   useEffect(() => {
-    document.body.className = ''; // Clear existing classes
-    document.body.classList.add(theme); // e.g., "dark" or "light"
+    document.body.className = theme;
   }, [theme]);
 
   return (

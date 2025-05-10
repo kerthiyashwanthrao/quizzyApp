@@ -5,11 +5,11 @@
     justify-content: center;
     padding: 40px 20px;
     min-height: 100vh;
-    background: linear-gradient(135deg, #d5e2ee, #d9e2ec);
+    /* background: linear-gradient(135deg, #d5e2ee, #d9e2ec); */
     font-family: 'Poppins', sans-serif;
 
 
-    background-position: center;
+    /* background-position: center; */
   
   }
   
