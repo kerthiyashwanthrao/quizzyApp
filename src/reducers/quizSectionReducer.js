@@ -1,4 +1,3 @@
-// quizSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 import { questionsData } from "../questions";
 // import * as AllQuestions from "../Questions"
