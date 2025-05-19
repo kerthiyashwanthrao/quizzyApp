@@ -9,8 +9,9 @@ import { useSelector } from "react-redux";
 import ModulesPage from "./pages/QuizModule/QuizModule";
 import QuizPage from "./components/Quiz/QuizSection/QuizSection";
 import Layout from "./layouts/Layout";
-import GoogleLoginButton from "./components/Login";
+import GoogleLoginButton from "./components/Login/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
 const App = () => {
   const selectedModule = useSelector((state) => state.quiz.selectedModule);
@@ -23,7 +24,10 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<GoogleLoginButton />} />
+        <Route element={<PublicRoute />}>
+          <Route path="/login" element={<GoogleLoginButton />} />
+          {/* add signup etc. here */}
+        </Route>
         <Route element={<ProtectedRoute />}>
           <Route element={<Layout />}>
             <Route path="/" element={<ModulesPage />} />

@@ -9,8 +9,7 @@ import { useNavigate } from "react-router-dom";
 import ReusableModal from "../../components/ReusableModal/ReusableModal";
 import "./QuizModule.css";
 import { motion } from "framer-motion";
-import NewProgressBar from "../../components/NewProgressBar";
-import DependentDropdown from "../../PracticeComponents/DependentDropdown";
+import PersistentDrawerRight from "../../components/Drawer/Drawer";
 
 const ModulesPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,9 +34,8 @@ const ModulesPage = () => {
 
   return (
     <div className="modules-page">
-    {/* <NewProgressBar/> */}
-    {/* <DependentDropdown/> */}
-      <h2 >Select a Module for Quiz</h2>
+      {/* <PersistentDrawerRight /> */}
+      <h2>Select a Module for Quiz</h2>
       <motion.div
         className="modules-list"
         initial={{ opacity: 0, y: 50, scale: 1 }}
