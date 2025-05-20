@@ -11,8 +11,8 @@ export default function LogoutButton() {
 
   const handleLogout = async () => {
     await auth.signOut();
-    navigate("/login", { replace: true });
     dispatch(logout());
+    navigate("/login", { replace: true });
   };
 
   return (
