@@ -16,18 +16,18 @@ export default function Footer() {
   return (
     <div className="footer">
       <div className="footerSec">
-        <span className="footerLogo">QuizzyApp.in</span>
+        <span className="footerLogo"  >QuizzyApp.in</span>
         <div className="footerItem">
           <div className="socialLinks">
             <span className="socialTitle">Follow Us:</span>
             <div className="links">
-              <a href="##" className="linkItem">
+              <a href="https://www.instagram.com/yash_1_th_kerthi/" target="_blank" className="linkItem">
                 <InstagramIcon></InstagramIcon> Instagram
               </a>
-              <a href="##" className="linkItem">
+              <a href="https://www.facebook.com/share/1CLoVSwMzM/" target="_blank" className="linkItem">
                 <FacebookIcon></FacebookIcon> Facebook
               </a>
-              <a href="##" className="linkItem">
+              <a href="https://www.linkedin.com/in/yashwanthkerthi/" target="_blank" className="linkItem">
                 <LinkedInIcon></LinkedInIcon> LinkedIn
               </a>
             </div>
@@ -46,15 +46,18 @@ export default function Footer() {
             <div className="contactItem">
               <CallIcon></CallIcon>
               <div className="contactTexts">
-                <a href="+918341263820" className="contacttext">
-                  +91 8341263820{" "}
+                <a href="tel:+918341263820" className="contacttext">
+                  +91 8341263820
                 </a>
               </div>
             </div>
             <div className="contactItem">
               <EmailIcon></EmailIcon>
               <div className="contactTexts">
-                <a href="kerthiyashwanthrao@gmail.com" className="contacttext">
+                <a
+                  href="mailto:kerthiyashwanthrao@gmail.com"
+                  className="contacttext"
+                >
                   kerthiyashwanthrao@gmail.com
                 </a>
               </div>
