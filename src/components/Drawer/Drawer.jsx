@@ -105,7 +105,11 @@ export default function PersistentDrawerRight() {
           <Typography variant="h6" noWrap sx={{ flexGrow: 1 }} component="div">
             Home
           </Typography>
-          <div className="navIcon" style={{backgroundColor:mode === "dark" ? "black":"white"}} onClick={() => dispatch(toggleTheme())}>
+          <div
+            className="navIcon"
+            style={{ backgroundColor: mode === "dark" ? "black" : "white" }}
+            onClick={() => dispatch(toggleTheme())}
+          >
             <ThemeToggler mode={mode === "dark" ? true : false} />
           </div>
           <IconButton
@@ -145,16 +149,6 @@ export default function PersistentDrawerRight() {
         </DrawerHeader>
         <Divider />
         <List>
-          {/* {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))} */}
           <div className="navIcon">
             <img
               className="profileImg"
@@ -168,15 +162,7 @@ export default function PersistentDrawerRight() {
             </p>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-around",
-              alignItems: "center",
-              flexGrow: 1,
-            }}
-          >
-            <p>Logout</p>
+          <div className="navIcon">
             <LogoutButton />
           </div>
         </List>
