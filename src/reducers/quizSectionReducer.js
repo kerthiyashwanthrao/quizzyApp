@@ -7,15 +7,14 @@ import { javascriptQuestionsData } from "../Questions/javascript";
 import { reactjsQuestionsData } from "../Questions/reactjs";
 import { reduxQuestionsData } from "../Questions/redux";
 
-
 const initialState = {
   questionsData: questionsData,
   score: 0,
   quizStarted: false,
   quizSubmitted: false,
   timer: 30, // 5 minutes
-  initialTimer:30,
-  modules: ['HTML', 'CSS', 'JavaScript', 'React',"Redux"],
+  initialTimer: 30,
+  modules: ["HTML", "CSS", "JavaScript", "React", "Redux"],
   highScore: 0,
   currentIndex: 0,
   selectedAnswers: {},
@@ -32,7 +31,7 @@ const quizSlice = createSlice({
       state.answers = {};
       state.score = 0;
       state.quizSubmitted = false;
-      state.timer =  30;
+      state.timer = 30;
     },
     resetQuiz: (state) => {
       Object.assign(state, initialState);
@@ -52,8 +51,7 @@ const quizSlice = createSlice({
           [questionId]: answer,
         };
       }
-    }
-,    
+    },
     prevQuestion: (state) => {
       if (state.currentIndex > 0) {
         state.currentIndex = state.currentIndex - 1;
@@ -68,16 +66,16 @@ const quizSlice = createSlice({
       });
       state.score = score;
       state.quizSubmitted = true;
-      state.quizStarted = false
-      state.selectedAnswers = {}
-    
+      state.quizStarted = false;
+      state.selectedAnswers = {};
+
       if (state.score > state.highScore) {
         state.highScore = state.score;
       }
     },
     nextQuestion: (state) => {
       state.currentIndex += 1;
-      state.timer= initialState.initialTimer
+      state.timer = initialState.initialTimer;
     },
     setHighScore: (state) => {
       if (state.score > state.highScore) {
@@ -92,23 +90,28 @@ const quizSlice = createSlice({
         state.score = state.score + 1;
       }
     },
-    shuffleQuestions:(state)=>{
-      state.questionsData = state.questionsData.sort(()=>Math.random()-0.5)
+    shuffleQuestions: (state) => {
+      state.questionsData = state.questionsData.sort(() => Math.random() - 0.5);
     },
     decreaseTimer: (state) => {
       if (state.timer > 0) {
         state.timer -= 1;
       }
 
-      if (state.timer ===0 && state.currentIndex<state.questionsData.length-1){
-        state.timer = initialState.initialTimer
-        state.currentIndex = state.currentIndex + 1
-
+      if (
+        state.timer === 0 &&
+        state.currentIndex < state.questionsData.length - 1
+      ) {
+        state.timer = initialState.initialTimer;
+        state.currentIndex = state.currentIndex + 1;
       }
-      if(state.timer === 0 && state.currentIndex===state.questionsData.length-1 )
-        state.quizSubmitted = true
+      if (
+        state.timer === 0 &&
+        state.currentIndex === state.questionsData.length - 1
+      )
+        state.quizSubmitted = true;
     },
-    selectModule: (state,action) => {
+    selectModule: (state, action) => {
       const moduleName = action.payload;
       state.selectedModule = moduleName;
       state.currentIndex = 0;
@@ -118,21 +121,21 @@ const quizSlice = createSlice({
 
       // Load questions based on selected module
       switch (moduleName) {
-        case 'HTML':
+        case "HTML":
           state.questionsData = htmlQuestionsData;
           break;
-        case 'CSS':
+        case "CSS":
           state.questionsData = cssQuestionsData;
           break;
-        case 'JavaScript':
+        case "JavaScript":
           state.questionsData = javascriptQuestionsData;
           break;
-        case 'React':
+        case "React":
           state.questionsData = reactjsQuestionsData;
           break;
-          case "Redux":
-            state.questionsData = reduxQuestionsData;
-            break;
+        case "Redux":
+          state.questionsData = reduxQuestionsData;
+          break;
         default:
           state.questionsData = [];
           break;
@@ -154,7 +157,7 @@ export const {
   selectedAnswers,
   decreaseTimer,
   selectModule,
-  shuffleQuestions
+  shuffleQuestions,
 } = quizSlice.actions;
 
 export default quizSlice.reducer;
