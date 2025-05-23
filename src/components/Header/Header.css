@@ -1,274 +1,36 @@
-/* for gold color #FDB515*/
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap');
-.loadscreen{
-    height: 1000px;
-    transition: .4s linear;
-}
-.navbar{
-    position: fixed;
-    right: 0;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0rem 2rem;
-    background: rgb(1,33,105);
-    background: linear-gradient(150deg, rgba(2, 44, 141, 0.991) 20%, rgba(0,71,171,1) 70%, rgba(124,185,232,1) 100%);
-    z-index: 9999;
-    transition: .2s linear;
-    border-bottom: .1rem solid white;
-    height: 10vh;
-}
-.navbar-hide{
-   top: -10vh;
-}
-.logo{
-    height: 75px;
-    width:200px;
-    padding:.3rem;
-}
-.navhead{
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    object-fit: contain;
-}
-.menubar{
-    display: flex;
-    align-items: center;
-    gap:2.5rem;
-}
-.menuItem{
-    text-decoration: none;
-    font-size: 1rem;
-    color:white;
-    font-weight: 300;
-    transition: .2s linear;
-    font-family: "Baloo 2", sans-serif;
-    margin-right: 15px;
-}
-.menuItem.bo-item{
-   font-size: 1rem;
-   padding: .5rem;
-   /* border: .1rem solid #FDB515; */
-   border-radius: .5rem;
-   letter-spacing:.5px;
-   color:#f5f5f5;
-   
-}
-.menuItem:hover{
-    color:#FDB515;
-}
-.menuItem.bo-item:hover{
-    color:#FDB515;
-}
-.navIcon{
-    display: flex;
-    align-items: center;
-    gap:1.2rem;
-}
-.navBtn{
-    border: none;
-    background-color:white;
-    color: #002D62;
-    padding:.5rem 1rem;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: .2s linear;
-    font-weight: bold;
-}
-.navBtn:hover{
-    background-color:#FDB515;
-}
-.searchIcon{
-    font-weight:300;
-    font-size:1rem;
-    cursor: pointer;
-    color: white;
-    transition: .2s linear;
-}
-.searchIcon:hover{
-    color:#FDB515;
-}
-.shoppingCart{
-    position: relative;
-    display: flex;
-    justify-content: center;
-    cursor: pointer;
-}
-.navCart{
-    font-weight:300;
-    color: white;
-    transition: .2s linear;
-}
-.navCart:hover{
-    color: #FDB515;
-}
-.cartItem{
-    position: absolute;
-    background-color:#FDB515;
-    color:white;
-    font-size: .8rem;
-    right: -5px;
-    top: -8px;
-    padding: 2px 5px;
-    border-radius:.5rem;
-}
-.closeIcon , .menuIcon{
-    color: white;
-    font-weight: 300;
-    transition: .2s linear;
-}
-.searchSec{
-    position:absolute;
-    top: 100%;
-    background-color:#f5f5f5;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding:2rem;
-    transition: .4s ease;
-    border-bottom: .1rem solid lightgray;
-    z-index:2;
-}
-.searchTitle{
-    font-size: 1.5rem;
-    padding: 1rem 0rem;
-}
-.inputBox{
-    display: flex;
-    align-items: center;
-    border: .1rem solid lightgray;
-    background-color:white;
-    width: 70%;
-}
-
-.searchInput{
-    border:none;
-    height: 100%;
-    width: 100%;
-    padding: .5rem;
-    outline: none;
-}
-.searchResult{
-    margin-top:1rem;
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    width: 70%;
-}
-.SearchCloseIcon{
-    position: absolute;
-    top:5%;
-    right: 3%;
-    cursor: pointer;
-}
-
-.searchBtnSec{
-    padding: 1rem;
-}
-.useraccount{
-    font-size: 2rem;
-    color: white;
-    transition: .2s linear;
-}
-.useraccount:hover{
-    color: #FDB515;
-}
-
-.viewAllBtn{
-    color: #FDB515;
-    border: .1rem solid #FDB515;
-    padding: .8rem 1.5rem;
-    font-weight: bold;
-    background-color: transparent;
-    transition: .2s linear;
-}
-.viewAllBtn:hover{
-    color: white;
-    background-color: #FFD700;
-}
-
 .profileImg{
     width: 50px;
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
 }
-
-
-/* responsive css */
-
-@media screen and (max-width:1150px){
-    .navbar{
-     justify-content: space-between;
-    }
-    .menubar{
-       position: absolute;
-       top: 100%;
-       flex-direction: column;
-       gap: 1.5rem;
-       padding: 2rem;
-       background-color:white;
-       right: -120%;
-       width: 100%;
-       height: 100vh;
-       transition: .2s linear;
-    }
-    .open{
-        right: 0%;
-    }
-    .menuItem{
-        color: black;
-        align-items: center;
-    }
-    .navBtn{
-        background-color: #0047ab;
-        color: white;
-    }
-    .logo{
-        width: 150px;
-        height: 60px;
-    }
-    /* .navhead{
-        width: 120px;
-        height: 70px;
-    } */
-    .searchSec{
-        padding: .5rem 0rem;
-    }
-    .searchResult{
-        width: 90%;
-    }
-    .viewAllBtn{
-        padding: .6rem 1.4rem;
-    }
-    .useraccount{
-        color: #FDB515;
-    }
-    .menuItem.bo-item{
-        color: #FDB515;
-        border: .1rem solid  #FDB515;
-    }
-    .menuItem.bo-item:hover{
-        color: white;
-        background-color: #FDB515;
-    }
-    .profileImg{
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-    
-}
-
-.navRight{
+/* .navIcon{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-
-}
+    justify-content: center;
+    gap:1.2rem;
+} */
+.navIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #f5f5f5;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: "Segoe UI", sans-serif;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav-label {
+    font-weight: 600;
+    color: #444;
+    margin: 0;
+  }
+  
+  .nav-username {
+    font-weight: 500;
+    color: #0077cc;
+    margin: 0;
+  }
+  

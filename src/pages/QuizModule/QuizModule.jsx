@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectModule,
@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 import ReusableModal from "../../components/ReusableModal/ReusableModal";
 import "./QuizModule.css";
 import { motion } from "framer-motion";
-import PersistentDrawerRight from "../../components/Drawer/Drawer";
 
 const ModulesPage = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +33,6 @@ const ModulesPage = () => {
 
   return (
     <div className="modules-page">
-      {/* <PersistentDrawerRight /> */}
       <h2>Select a Module for Quiz</h2>
       <motion.div
         className="modules-list"
@@ -42,7 +40,7 @@ const ModulesPage = () => {
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{
           duration: 4,
-          ease: [0.22, 1, 0.36, 1], // a smooth "easeOutExpo" feel
+          ease: [0.22, 1, 0.36, 1], 
         }}
       >
         {modules.map((module) => (

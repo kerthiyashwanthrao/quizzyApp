@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { questionsData } from "../questions";
-// import * as AllQuestions from "../Questions"
 import { htmlQuestionsData } from "../Questions/html";
 import { cssQuestionsData } from "../Questions/css";
 import { javascriptQuestionsData } from "../Questions/javascript";

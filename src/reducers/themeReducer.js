@@ -1,8 +1,7 @@
-// redux/themeSlice.js
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  mode: localStorage.getItem("theme") || "light", // persist theme
+  mode: localStorage.getItem("theme") || "light", 
 };
 
 const themeSlice = createSlice({

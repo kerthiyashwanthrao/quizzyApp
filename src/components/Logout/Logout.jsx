@@ -1,4 +1,3 @@
-// components/LogoutButton.jsx
 import { useDispatch } from "react-redux";
 import { auth } from "../../../firebase";
 import { logout } from "../../reducers/authReducer";
