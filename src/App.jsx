@@ -21,6 +21,11 @@ const App = () => {
     document.body.className = theme;
   }, [theme]);
 
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Router>
       <Routes>

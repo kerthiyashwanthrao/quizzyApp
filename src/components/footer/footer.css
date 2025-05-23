@@ -37,9 +37,10 @@
     gap:.8rem;
 }
 .socialTitle{
-    font-size: 1rem;
+    font-size: 1.2rem;
+
     /* color: black; */
-    font-weight: 300;
+    font-weight: bold;
 }
 .links{
     display: flex;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 //importing css
 import "./footer.css";
@@ -13,39 +14,98 @@ import CallIcon from "@mui/icons-material/Call";
 import EmailIcon from "@mui/icons-material/Email";
 
 export default function Footer() {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 50 },
+    show: { opacity: 1, y: 0 },
+  };
+  const transition = {
+    duration: 0.5,
+    staggerChildren: 0.5,
+  };
   return (
-    <div className="footer">
-      <div className="footerSec">
-        <span className="footerLogo"  >QuizzyApp.in</span>
-        <div className="footerItem">
-          <div className="socialLinks">
-            <span className="socialTitle">Follow Us:</span>
-            <div className="links">
-              <a href="https://www.instagram.com/yash_1_th_kerthi/" target="_blank" className="linkItem">
+    <motion.div
+      className="footer"
+      initial="hidden"
+      whileInView="show"
+      variants={fadeInUp}
+      transition={transition}
+    >
+      <motion.div className="footerSec" variants={fadeInUp} transition={transition}>
+        <motion.span
+          className="footerLogo"
+          variants={fadeInUp}
+          transition={transition}
+        >
+          QuizzyApp.in
+        </motion.span>
+        <motion.div className="footerItem" variants={fadeInUp} transition={transition}>
+          <motion.div
+            className="socialLinks"
+            variants={fadeInUp}
+            transition={transition}
+          >
+            <span
+              className="socialTitle"
+            >
+              Follow Us:
+            </span>
+            <motion.div className="links" variants={fadeInUp} transition={transition}>
+              <a
+                href="https://www.instagram.com/yash_1_th_kerthi/"
+                target="_blank"
+                className="linkItem"
+              >
                 <InstagramIcon></InstagramIcon> Instagram
               </a>
-              <a href="https://www.facebook.com/share/1CLoVSwMzM/" target="_blank" className="linkItem">
+              <a
+                href="https://www.facebook.com/share/1CLoVSwMzM/"
+                target="_blank"
+                className="linkItem"
+              >
                 <FacebookIcon></FacebookIcon> Facebook
               </a>
-              <a href="https://www.linkedin.com/in/yashwanthkerthi/" target="_blank" className="linkItem">
+              <a
+                href="https://www.linkedin.com/in/yashwanthkerthi/"
+                target="_blank"
+                className="linkItem"
+              >
                 <LinkedInIcon></LinkedInIcon> LinkedIn
               </a>
-            </div>
-          </div>
-        </div>
+              <a
+                href="https://www.linkedin.com/in/yashwanthkerthi/"
+                target="_blank"
+                className="linkItem"
+              >
+                <LinkedInIcon></LinkedInIcon> LinkedIn
+              </a>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        <div className="footerItem">
-          <span className="footerContactTitle"> Contact</span>
-          <div className="contacts">
+        <motion.div className="footerItem" variants={fadeInUp} transition={transition}>
+          <span
+            className="footerContactTitle"
+          >
+            Contact
+          </span>
+          <motion.div className="contacts" variants={fadeInUp} transition={transition}>
             <div className="contactItem">
               <LocationOnIcon></LocationOnIcon>
               <span className="contacttextaddress" style={{ lineHeight: 1.5 }}>
                 Sadguru sai residency<br></br> Namdevwada , Nizamabad - 503001
               </span>
             </div>
-            <div className="contactItem">
+            <div
+              className="contactItem"
+              variants={fadeInUp}
+              transition={transition}
+            >
               <CallIcon></CallIcon>
-              <div className="contactTexts">
+              <div
+                className="contactTexts"
+                variants={fadeInUp}
+                transition={transition}
+              >
                 <a href="tel:+918341263820" className="contacttext">
                   +91 8341263820
                 </a>
@@ -53,23 +113,29 @@ export default function Footer() {
             </div>
             <div className="contactItem">
               <EmailIcon></EmailIcon>
-              <div className="contactTexts">
+              <motion.div className="contactTexts">
                 <a
                   href="mailto:kerthiyashwanthrao@gmail.com"
                   className="contacttext"
                 >
                   kerthiyashwanthrao@gmail.com
                 </a>
-              </div>
+              </motion.div>
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="footerCopyright">
-        <span className="copyText">
+          </motion.div>
+        </motion.div>
+      </motion.div>
+      <motion.div
+        className="footerCopyright"
+        variants={fadeInUp}
+        transition={transition}
+      >
+        <motion.span
+          className="copyText"
+        >
           &#169; 2025 Developed by KYR | all rights reserved
-        </span>
-      </div>
-    </div>
+        </motion.span>
+      </motion.div>
+    </motion.div>
   );
 }
