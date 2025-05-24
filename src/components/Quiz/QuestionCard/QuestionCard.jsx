@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useMemo } from "react";
 import "./QuestionCard.css";
 
 const QuestionCard = ({ question, selectedAnswer, onAnswerSelect }) => {
+  // Memoize answers to avoid recalculating Object.entries on every render
+  const validAnswers = useMemo(() => {
+    return Object.entries(question.answers).filter(([, value]) => !!value);
+  }, [question.answers]);
+
   return (
     <div className="question-card">
       <h3 className="question-title">{question.question}</h3>
@@ -9,9 +14,7 @@ const QuestionCard = ({ question, selectedAnswer, onAnswerSelect }) => {
         <p className="question-description">{question.description}</p>
       )}
 
-      {Object.entries(question.answers).map(([key, value]) => {
-        if (!value) return null;
-
+      {validAnswers.map(([key, value]) => {
         const isSelected = selectedAnswer === key;
 
         return (
@@ -28,4 +31,5 @@ const QuestionCard = ({ question, selectedAnswer, onAnswerSelect }) => {
   );
 };
 
-export default QuestionCard;
+// React.memo prevents unnecessary re-renders when props don't change
+export default React.memo(QuestionCard);

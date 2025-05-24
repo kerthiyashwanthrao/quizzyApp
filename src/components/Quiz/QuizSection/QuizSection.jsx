@@ -1,17 +1,21 @@
-import React, { useEffect, useState } from "react";
-import QuestionCard from "../QuestionCard/QuestionCard";
-import "./QuizSection.css";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState, useMemo, useCallback } from "react";
+import { useDispatch, useSelector, shallowEqual } from "react-redux";
 import {
   selectAnswers,
   nextQuestion,
   submitQuiz,
   decreaseTimer,
 } from "../../../reducers/quizSectionReducer";
+import QuestionCard from "../QuestionCard/QuestionCard";
 import ProgressBar from "../../ProgressBar/ProgressBar";
 import { useNavigate } from "react-router-dom";
+import "./QuizSection.css";
 
 const QuizSection = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  // Efficient selector usage with shallowEqual
   const {
     score,
     currentIndex,
@@ -19,71 +23,68 @@ const QuizSection = () => {
     questionsData,
     quizSubmitted,
     timer,
-  } = useSelector((state) => state.quiz);
-  const dispatch = useDispatch();
-  const [initialTimer, setInitialTimer] = useState(0);
-  const navigate = useNavigate();
+  } = useSelector((state) => state.quiz, shallowEqual);
+
+  const [initialTimer] = useState(timer);
   const [answerSelectError, setAnswerSelectError] = useState(false);
 
-  const currentQuestion = questionsData[currentIndex];
+  const currentQuestion = useMemo(() => questionsData[currentIndex], [questionsData, currentIndex]);
 
+  // Timer effect
   useEffect(() => {
-    setInitialTimer(timer);
-    console.log("initial time");
-  }, []);
-
-  useEffect(() => {
-    if (quizSubmitted) return; // ⛔ Stop timer if quiz is done
+    if (quizSubmitted) return;
 
     const interval = setInterval(() => {
       dispatch(decreaseTimer());
     }, 1000);
 
-    return () => clearInterval(interval); // Cleanup
+    return () => clearInterval(interval);
   }, [dispatch, quizSubmitted]);
 
-  const handleAnswerSelect = (answer) => {
-    console.log(selectedAnswers);
-    
+  // Memoized handler for selecting answers
+  const handleAnswerSelect = useCallback((answer) => {
     setAnswerSelectError(false);
     dispatch(selectAnswers({ questionId: currentIndex, answer }));
-  };
+  }, [dispatch, currentIndex]);
 
-  const handleNextOrSubmit = () => {
+  // Memoized handler for next/submit
+  const handleNextOrSubmit = useCallback(() => {
+    const isAnswerSelected = currentIndex in selectedAnswers;
+
     if (currentIndex + 1 === questionsData.length) {
-      if(currentIndex in selectedAnswers){
+      if (isAnswerSelected) {
         dispatch(submitQuiz());
-      }
-      setAnswerSelectError(true)
-    } else {
-      if (currentIndex in selectedAnswers) {
         setAnswerSelectError(false);
-
-        dispatch(nextQuestion());
       } else {
         setAnswerSelectError(true);
-        console.log(answerSelectError, "answerselect error");
+      }
+    } else {
+      if (isAnswerSelected) {
+        dispatch(nextQuestion());
+        setAnswerSelectError(false);
+      } else {
+        setAnswerSelectError(true);
       }
     }
-  };
+  }, [currentIndex, selectedAnswers, questionsData.length, dispatch]);
 
-  const onClickBackToHome = () => {
-    navigate("/",{ replace: true });
-  };
+  const onClickBackToHome = useCallback(() => {
+    navigate("/", { replace: true });
+  }, [navigate]);
 
   return (
     <div className="quizSection">
       {!quizSubmitted && (
         <ProgressBar timer={timer} initialTimer={initialTimer} />
       )}
+
       {!quizSubmitted ? (
         <>
           <div className="question">
             <h3 className="question-no">
               Question {currentIndex + 1} of {questionsData.length}
             </h3>
-
-            <span style={{ color: "red" }}> {timer} secs left </span>
+            <span style={{ color: "red" }}>{timer} secs left</span>
           </div>
 
           <QuestionCard
@@ -91,11 +92,13 @@ const QuizSection = () => {
             selectedAnswer={selectedAnswers[currentIndex] || null}
             onAnswerSelect={handleAnswerSelect}
           />
+
           {answerSelectError && (
-            <p style={{ color: "red", textAlign: "center" ,fontSize:"18px"}}>
+            <p style={{ color: "red", textAlign: "center", fontSize: "18px" }}>
               * Please select an answer
             </p>
           )}
+
           <div className="button-container">
             <button
               onClick={handleNextOrSubmit}
@@ -122,4 +125,4 @@ const QuizSection = () => {
   );
 };
 
-export default QuizSection;
+export default React.memo(QuizSection);
