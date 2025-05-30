@@ -84,7 +84,7 @@ export default function Footer() {
           <span
             className="footerContactTitle"
           >
-            Contact
+            Contact Us
           </span>
           <motion.div className="contacts" variants={fadeInUp} transition={transition}>
             <div className="contactItem">
